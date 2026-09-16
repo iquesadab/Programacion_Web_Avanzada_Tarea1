@@ -66,3 +66,5 @@ Tarea1/
 
 | # | Fecha | Hash | Mensaje | Caso | Cambio |
 |---|---|---|---|---|---|
+| 1 | 2026-09-15 | bbbd506 | Initial commit | Ambos | Inicialización del repositorio
+| 2 | 2026-09-15 | b166159 | [new]: Agrega estructura inicial del README | Ambos | Estructura inicial de documentación

@@ -1,0 +1,128 @@
+/* Variables */
+:root {
+    /* Colores principales */
+    --color-primario: #2E7D32;
+    --color-secundario: #66BB6A;
+    --color-fondo: #F5F7F5;
+    --color-superficie: #FFFFFF;
+
+    /* Texto y bordes */
+    --color-texto-principal: #1F2937;
+    --color-texto-secundario: #6B7280;
+    --color-borde: #E5E7EB;
+
+    /* Estados de misiones */
+    --color-pendiente: #3B82F6;
+    --color-progreso: #10B981;
+    --color-completada: #8B5CF6;
+    --color-suspendida: #6B7280;
+
+    /* Alertas */
+    --color-critica: #DC2626;
+    --color-alta: #F97316;
+    --color-media: #EAB308;
+    --color-informativa: #3B82F6;
+
+    /* Espaciados */
+    --espaciado-pequeno: 0.5rem;
+    --espaciado-medio: 1rem;
+    --espaciado-grande: 2rem;
+
+    /* Bordes */
+    --radio-pequeno: 0.5rem;
+    --radio-medio: 0.75rem;
+    --radio-grande: 1rem;
+}
+
+
+/* Configuración general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+}
+
+
+/* Encabezado */
+header {
+    background-color: var(--color-primario);
+    color: white;
+    padding: var(--espaciado-medio);
+}
+
+header h1 {
+    margin-top: 0;
+}
+
+
+/* Navegación */
+nav {
+    background-color: var(--color-superficie);
+    padding: var(--espaciado-medio);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+nav a {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* Contenido principal */
+main {
+    padding: var(--espaciado-medio);
+}
+
+
+/* Secciones */
+section,
+aside {
+    margin-bottom: var(--espaciado-grande);
+}
+
+section h2,
+aside h2 {
+    color: var(--color-primario);
+}
+
+
+/* Tarjetas */
+article {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    padding: var(--espaciado-medio);
+    margin-bottom: var(--espaciado-medio);
+}
+
+article h3 {
+    margin-top: 0;
+}
+
+article p {
+    color: var(--color-texto-secundario);
+}
+
+
+/* Iconos */
+i {
+    margin-right: var(--espaciado-pequeno);
+}
+
+
+/* Pie de página */
+footer {
+    background-color: var(--color-primario);
+    color: white;
+    text-align: center;
+    padding: var(--espaciado-medio);
+}
