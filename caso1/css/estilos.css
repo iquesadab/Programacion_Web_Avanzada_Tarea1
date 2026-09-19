@@ -34,6 +34,7 @@
     --radio-grande: 1rem;
 }
 
+/* CELULAR */
 
 /* Configuración general */
 * {
@@ -65,6 +66,15 @@ nav {
     background-color: var(--color-superficie);
     padding: var(--espaciado-medio);
     border-bottom: 1px solid var(--color-borde);
+
+    /* Contenedor Flexbox */
+    display: flex;
+
+    /* Espaciado entre los enlaces */
+    gap: var(--espaciado-medio);
+
+    /* Permite que los items salten a una nueva linea flexible cuando no caben */
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -80,8 +90,16 @@ nav a:hover {
 /* Contenido principal */
 main {
     padding: var(--espaciado-medio);
-}
 
+    /* Convierte el main en un Grid */
+    display: grid;
+
+    /* Como la base está pensada para móvil. usamos solo una columna que ocupa todo el espacio disponible, 1fr */
+    grid-template-columns: 1fr;
+
+    /* Espacio entre las diferentes zonas */
+    gap: var(--espaciado-grande);
+}
 
 /* Secciones */
 section,
@@ -93,7 +111,6 @@ section h2,
 aside h2 {
     color: var(--color-primario);
 }
-
 
 /* Tarjetas */
 article {
@@ -112,12 +129,83 @@ article p {
     color: var(--color-texto-secundario);
 }
 
-
 /* Iconos */
 i {
     margin-right: var(--espaciado-pequeno);
 }
 
+.resumen {
+    display: grid;
+
+    /* En teléfono una sola columna */
+    grid-template-columns: 1fr;
+
+    gap: var(--espaciado-medio);
+
+}
+
+/* El título debe ocupar todo el ancho del Grid */
+.resumen h2 {
+    grid-column: 1 / -1;
+}
+
+.resumen article {
+    /* Flexbox para cada article */
+    display: flex;
+
+    /* Así número y texto van a permanecer uno debajo del otro */
+    flex-direction: column;
+
+    /* Centra el contenido */
+    align-items: center;
+    text-align: center;
+}
+
+.misiones {
+    display: grid;
+
+    /* En teléfono las misiones aparecen
+       una debajo de otra */
+    grid-template-columns: 1fr;
+
+    gap: var(--espaciado-medio);
+}
+
+/* El título ocupa todo el ancho */
+.misiones h2 {
+    grid-column: 1 / -1;
+}
+
+.equipos {
+    display: grid;
+
+    /* Una columna en teléfono */
+    grid-template-columns: 1fr;
+
+    gap: var(--espaciado-medio);
+}
+
+.equipos h2 {
+    grid-column: 1 / -1;
+}
+
+.alertas article {
+    display: flex;
+
+    /* Mantiene el contenido vertical */
+    flex-direction: column;
+
+    gap: var(--espaciado-pequeno);
+}
+
+.actividades article {
+    display: flex;
+
+    /* Mantiene el contenido vertical */
+    flex-direction: column;
+
+    gap: var(--espaciado-pequeno);
+}
 
 /* Pie de página */
 footer {
@@ -125,4 +213,47 @@ footer {
     color: white;
     text-align: center;
     padding: var(--espaciado-medio);
+}
+
+/* TABLET */
+@media (min-width: 48rem) {
+
+    .resumen {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Dos misiones por fila */
+    .misiones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Dos equipos por fila */
+    .equipos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Colocamos hora, actividad y equipo horizontalmente */
+    .actividades article {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: var(--espaciado-medio);
+    }
+}
+
+/* ESCRITORIO */
+@media (min-width: 64rem) {
+    .resumen {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Misiones en dos columnas porque tienen mucha informacion */
+    .misiones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /*
+    Equipos en una sola fila */
+    .equipos {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
