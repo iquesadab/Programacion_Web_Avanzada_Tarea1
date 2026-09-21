@@ -1,0 +1,462 @@
+/* VARIABLES */
+:root {
+
+    /* Colores principales */
+    --color-primario: #7C3AED;
+    --color-secundario: #F97316;
+    --color-fondo: #FFF7ED;
+    --color-superficie: #FFFFFF;
+
+    /* Texto y bordes */
+    --color-texto-principal: #27272A;
+    --color-texto-secundario: #71717A;
+    --color-borde: #E4E4E7;
+
+    /* Estados */
+    --color-ahora: #16A34A;
+    --color-importante: #F59E0B;
+    --color-traslado: #2563EB;
+    --color-cancelado: #DC2626;
+
+    /* Espaciados */
+    --espaciado-pequeno: 0.5rem;
+    --espaciado-medio: 1rem;
+    --espaciado-grande: 2rem;
+
+    /* Bordes */
+    --radio-pequeno: 0.5rem;
+    --radio-medio: 0.75rem;
+    --radio-grande: 1rem;
+}
+
+
+/* CELULAR */
+
+
+/* Configuración general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+}
+
+
+/* Encabezado */
+header {
+    background-color: var(--color-primario);
+    color: white;
+    padding: var(--espaciado-medio);
+}
+
+header h1 {
+    margin-top: 0;
+}
+
+header p {
+    margin: var(--espaciado-pequeno) 0;
+}
+
+
+/* Navegación */
+nav {
+    background-color: var(--color-superficie);
+    padding: var(--espaciado-medio);
+    border-bottom: 1px solid var(--color-borde);
+
+    /* Contenedor Flexbox */
+    display: flex;
+
+    /* Espacio entre los enlaces */
+    gap: var(--espaciado-medio);
+
+    /* Permite que los enlaces pasen a una nueva línea */
+    flex-wrap: wrap;
+
+    /* Mantiene la navegación visible al desplazarse */
+    position: sticky;
+    top: 0; /* Se fija cuando llega a la parte superior. */
+    z-index: 10; /* Mantiene la navegación por encima del contenido. */
+}
+
+nav a {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--color-secundario);
+    text-decoration: underline;
+}
+
+
+/* Contenido principal */
+main {
+    padding: var(--espaciado-medio);
+
+    /* Uso de Grid */
+    display: grid;
+
+    /* En teléfono se usa una sola columna */
+    grid-template-columns: 1fr;
+
+    /* Orden de las zonas en teléfono */
+    grid-template-areas:
+        "ahora"
+        "proximas"
+        "cambios"
+        "servicios"
+        "programacion";
+
+    /* Espacio entre las diferentes zonas */
+    gap: var(--espaciado-grande);
+}
+
+
+/* Secciones */
+section,
+aside {
+    margin-bottom: var(--espaciado-grande);
+}
+
+section h2,
+aside h2 {
+    color: var(--color-primario);
+    margin-top: 0;
+}
+
+
+/* Tarjetas */
+article {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    padding: var(--espaciado-medio);
+    margin-bottom: var(--espaciado-medio);
+}
+
+article h3 {
+    margin-top: 0;
+}
+
+article p {
+    color: var(--color-texto-secundario);
+}
+
+
+/* Íconos */
+i {
+    margin-right: var(--espaciado-pequeno);
+}
+
+
+/* AHORA */
+.ahora {
+    grid-area: ahora;
+
+    /* Grid */
+    display: grid;
+
+    /* En teléfono una sola columna */
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+        "titulo";
+
+    gap: var(--espaciado-medio);
+}
+
+.ahora h2 {
+    grid-area: titulo;
+}
+
+
+/* Tarjetas de actividades actuales */
+.ahora article {
+    /* Se utiliza position relative para que la etiqueta de estado pueda posicionarse dentro de cada tarjeta */
+    position: relative;
+
+    /* Espacio para la etiqueta */
+    padding-top: 2.5rem;
+}
+
+
+/* Etiqueta que indica que la actividad está ocurriendo actualmente */
+.estado-ahora {
+    background-color: var(--color-ahora);
+    color: white;
+
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+
+    border-radius: var(--radio-pequeno);
+
+    font-weight: bold;
+
+    /* La etiqueta se coloca en la parte superior derecha de la tarjeta */
+    position: absolute;
+    top: var(--espaciado-pequeno);
+    right: var(--espaciado-pequeno);
+}
+
+
+/* PRÓXIMAS ACTIVIDADES */
+.proximas {
+    grid-area: proximas;
+
+    display: grid;
+
+    /* En teléfono una sola columna */
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+        "titulo";
+
+    gap: var(--espaciado-medio);
+}
+
+.proximas h2 {
+    grid-area: titulo;
+}
+
+.proximas article h3 {
+    color: var(--color-secundario);
+}
+
+
+/* PROGRAMACIÓN POR ESCENARIOS */
+.programacion {
+    grid-area: programacion;
+
+    /* Grid */
+    display: grid;
+
+    /* En teléfono los escenarios aparecen uno debajo del otro */
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+        "titulo";
+
+    gap: var(--espaciado-medio);
+}
+
+.programacion h2 {
+    grid-area: titulo;
+}
+
+
+/* Tarjetas de los escenarios */
+.escenario {
+    border-top: 0.4rem solid var(--color-secundario);
+}
+
+.escenario h3 {
+    color: var(--color-primario);
+}
+
+
+/* CAMBIOS IMPORTANTES */
+.cambios {
+    grid-area: cambios;
+}
+
+.cambio {
+    /* Diferencia los avisos del resto de la programación */
+    border-left: 0.4rem solid;
+}
+
+/* Cambio de horario */
+.importante {
+    border-left-color: var(--color-importante);
+}
+
+/* Cambio de escenario */
+.traslado {
+    border-left-color: var(--color-traslado);
+}
+
+/* Actividad cancelada */
+.cancelado {
+    border-left-color: var(--color-cancelado);
+}
+
+
+/* SERVICIOS */
+.servicios {
+    grid-area: servicios;
+
+    /* Grid */
+    display: grid;
+
+    /* En teléfono se utilizan dos columnas */
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-areas:
+        "titulo titulo";
+
+    gap: var(--espaciado-medio);
+}
+
+.servicios h2 {
+    grid-area: titulo;
+}
+
+
+/* Cada servicio utiliza Flexbox */
+.servicios article {
+    display: flex;
+
+    /* Organiza icono, nombre y ubicación uno debajo del otro */
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: var(--espaciado-pequeno);
+}
+
+
+/* Ícono principal de los servicios */
+.servicios article > i {
+    color: var(--color-secundario);
+    font-size: 1.5rem;
+    margin-right: 0;
+}
+
+
+/* Pie de página */
+footer {
+    background-color: var(--color-primario);
+    color: white;
+    text-align: center;
+    padding: var(--espaciado-medio);
+}
+
+
+/* TABLET */
+
+@media (min-width: 48rem) {
+
+    /* El contenido principal pasa a utilizar dos columnas */
+    main {
+        grid-template-columns: repeat(2, 1fr);
+
+        /* Define la distribución de las diferentes zonas en tablet */
+        grid-template-areas:
+            "ahora ahora"
+            "proximas proximas"
+            "cambios servicios"
+            "programacion programacion";
+    }
+
+
+    /* AHORA */
+    .ahora {
+        /* Dos actividades por fila */
+        grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
+    }
+
+
+    /* PRÓXIMAS ACTIVIDADES */
+    .proximas {
+        /* Dos actividades por fila */
+        grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
+    }
+
+
+    /* PROGRAMACIÓN */
+    .programacion {
+        /* Dos escenarios por fila */
+        grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
+    }
+
+
+    /* SERVICIOS */
+    .servicios {
+        /* Tres servicios por fila */
+        grid-template-columns: repeat(3, 1fr);
+
+        /* El título ocupa las tres columnas */
+        grid-template-areas:
+            "titulo titulo titulo";
+    }
+}
+
+
+/* ESCRITORIO */
+
+@media (min-width: 64rem) {
+
+    /* En escritorio se aprovecha el espacio mostrando varias zonas simultáneamente */
+    main {
+        grid-template-columns: 2fr 1fr;
+
+        /* Las actividades y programación reciben mayor espacio */
+        grid-template-areas:
+            "ahora cambios"
+            "proximas servicios"
+            "programacion programacion";
+    }
+
+
+    /* AHORA */
+    .ahora {
+        /* Las tres actividades aparecen en una misma fila */
+        grid-template-columns: repeat(3, 1fr);
+
+        /* El título ocupa las tres columnas */
+        grid-template-areas:
+            "titulo titulo titulo";
+    }
+
+
+    /* PRÓXIMAS ACTIVIDADES */
+    .proximas {
+        /* Dos actividades por fila */
+        grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
+    }
+
+
+    /* PROGRAMACIÓN POR ESCENARIOS */
+    .programacion {
+        /* Los cuatro escenarios aparecen simultáneamente para facilitar su comparación */
+        grid-template-columns: repeat(4, 1fr);
+
+        /* El título ocupa las cuatro columnas */
+        grid-template-areas:
+            "titulo titulo titulo titulo";
+    }
+
+
+    /* SERVICIOS */
+    .servicios {
+        /* En la columna derecha se mantienen dos servicios por fila */
+        grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
+    }
+}
