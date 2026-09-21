@@ -60,7 +60,7 @@
                 <p>Río Claro</p>
                 <p>06:00 – 09:00</p>
                 <p><i class="fa-solid fa-caret-up"></i>Prioridad alta</p>
-                <p><i class="fa-solid fa-circle"></i>En progreso</p>
+                <p class="estado progreso"><i class="fa-solid fa-circle"></i>En progreso</p>
             </article>
 
             <article>
@@ -69,7 +69,7 @@
                 <p>Quebrada Pavo</p>
                 <p>09:30 – 11:00</p>
                 <p><i class="fa-solid fa-diamond"></i>Prioridad media</p>
-                <p><i class="fa-regular fa-circle"></i>Pendiente</p>
+                <p class="estado pendiente"><i class="fa-regular fa-circle"></i>Pendiente</p>
             </article>
 
             <article>
@@ -78,7 +78,7 @@
                 <p>Sendero Espavel</p>
                 <p>07:00 – 10:30</p>
                 <p><i class="fa-solid fa-diamond"></i>Prioridad media</p>
-                <p><i class="fa-solid fa-check"></i>Completada</p>
+                <p class="estado completada"><i class="fa-solid fa-check"></i>Completada</p>
             </article>
 
             <article>
@@ -87,7 +87,7 @@
                 <p>Estación Sirena</p>
                 <p>10:00 – 13:00</p>
                 <p><i class="fa-solid fa-caret-down"></i>Prioridad baja</p>
-                <p><i class="fa-solid fa-circle"></i>En progreso</p>
+                <p class="estado progreso"><i class="fa-solid fa-circle"></i>En progreso</p>
             </article>
 
             <article>
@@ -96,7 +96,7 @@
                 <p>Sector Los Patos</p>
                 <p>13:30 – 16:30</p>
                 <p><i class="fa-solid fa-caret-up"></i>Prioridad alta</p>
-                <p><i class="fa-solid fa-pause"></i>Suspendida</p>
+                <p class="estado suspendida"><i class="fa-solid fa-pause"></i>Suspendida</p>
             </article>
         </section>
 
@@ -137,25 +137,25 @@
 
         <aside class="alertas">
             <h2>Alertas</h2>
-            <article>
+            <article class="alerta critica">
                 <h3><i class="fa-solid fa-circle-exclamation"></i>Crecida del río</h3>
                 <p>Importancia: Crítica</p>
                 <p>Aumento rápido del nivel de agua en el sector oeste.</p>
             </article>
 
-            <article>
+            <article  class="alerta alta">
                 <h3><i class="fa-solid fa-triangle-exclamation"></i>Sendero temporalmente cerrado</h3>
                 <p>Importancia: Alta</p>
                 <p>La caída de un árbol bloquea el acceso al Sendero Cedro.</p>
             </article>
 
-            <article>
+            <article class="alerta media">
                 <h3><i class="fa-solid fa-battery-quarter"></i>Batería baja</h3>
                 <p>Importancia: Media</p>
                 <p>La cámara de monitoreo C-08 tiene un 15% de batería.</p>
             </article>
 
-            <article>
+            <article class="alerta informativa">
                 <h3><i class="fa-solid fa-cloud-rain"></i>Cambio en condiciones climáticas</h3>
                 <p>Importancia: Informativa</p>
                 <p>Se esperan lluvias moderadas después de las 16:00.</p>

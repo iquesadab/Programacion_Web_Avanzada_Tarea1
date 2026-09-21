@@ -1,4 +1,4 @@
-/* Variables */
+/* VARIABLES */
 :root {
     /* Colores principales */
     --color-primario: #2E7D32;
@@ -60,6 +60,10 @@ header h1 {
     margin-top: 0;
 }
 
+header p {
+    margin: var(--espaciado-pequeno) 0;
+}
+
 
 /* Navegación */
 nav {
@@ -75,11 +79,17 @@ nav {
 
     /* Permite que los items salten a una nueva linea flexible cuando no caben */
     flex-wrap: wrap;
+
+    /* Mantiene la navegación visible al desplazarse */
+    position: sticky;
+    top: 0; /* Indica que se fija cuando llega a la parte superior. */
+    z-index: 10; /* Hace que el nav quede por encima de otros elementos. */
 }
 
 nav a {
     color: var(--color-primario);
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -101,6 +111,7 @@ main {
     gap: var(--espaciado-grande);
 }
 
+
 /* Secciones */
 section,
 aside {
@@ -110,7 +121,9 @@ aside {
 section h2,
 aside h2 {
     color: var(--color-primario);
+    margin-top: 0;
 }
+
 
 /* Tarjetas */
 article {
@@ -123,30 +136,36 @@ article {
 
 article h3 {
     margin-top: 0;
+    color: var(--color-texto-principal);
 }
 
 article p {
     color: var(--color-texto-secundario);
 }
 
-/* Iconos */
+
+/* Íconos */
 i {
     margin-right: var(--espaciado-pequeno);
 }
 
+
+/* Resumen */
 .resumen {
     display: grid;
 
     /* En teléfono una sola columna */
     grid-template-columns: 1fr;
 
-    gap: var(--espaciado-medio);
+    grid-template-areas:
+        "titulo";
 
+    gap: var(--espaciado-medio);
 }
 
-/* El título debe ocupar todo el ancho del Grid */
+/* El título ocupa el área del título */
 .resumen h2 {
-    grid-column: 1 / -1;
+    grid-area: titulo;
 }
 
 .resumen article {
@@ -161,34 +180,76 @@ i {
     text-align: center;
 }
 
+/* Número principal de cada indicador */
+.resumen article p:first-of-type {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primario);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+
+/* Misiones */
 .misiones {
     display: grid;
 
-    /* En teléfono las misiones aparecen
-       una debajo de otra */
+    /* En teléfono las misiones aparecen una debajo de otra */
     grid-template-columns: 1fr;
+
+    grid-template-areas:
+        "titulo";
 
     gap: var(--espaciado-medio);
 }
 
 /* El título ocupa todo el ancho */
 .misiones h2 {
-    grid-column: 1 / -1;
+    grid-area: titulo;
 }
 
+/* Estados de las misiones */
+.estado {
+    padding: 0.4rem 0.7rem;
+    border-radius: var(--radio-pequeno);
+    font-weight: bold;
+}
+
+.pendiente {
+    color: var(--color-pendiente);
+}
+
+.progreso {
+    color: var(--color-progreso);
+}
+
+.completada {
+    color: var(--color-completada);
+}
+
+.suspendida {
+    color: var(--color-suspendida);
+}
+
+
+/* Equipos */
 .equipos {
     display: grid;
 
     /* Una columna en teléfono */
     grid-template-columns: 1fr;
 
+    grid-template-areas:
+        "titulo";
+
     gap: var(--espaciado-medio);
 }
 
 .equipos h2 {
-    grid-column: 1 / -1;
+    grid-area: titulo;
 }
 
+
+/* Alertas */
 .alertas article {
     display: flex;
 
@@ -198,6 +259,28 @@ i {
     gap: var(--espaciado-pequeno);
 }
 
+.alerta {
+    border-left: 0.4rem solid;
+}
+
+.critica {
+    border-left-color: var(--color-critica);
+}
+
+.alta {
+    border-left-color: var(--color-alta);
+}
+
+.media {
+    border-left-color: var(--color-media);
+}
+
+.informativa {
+    border-left-color: var(--color-informativa);
+}
+
+
+/* Próximas actividades */
 .actividades article {
     display: flex;
 
@@ -207,6 +290,11 @@ i {
     gap: var(--espaciado-pequeno);
 }
 
+.actividades article h3 {
+    color: var(--color-primario);
+}
+
+
 /* Pie de página */
 footer {
     background-color: var(--color-primario);
@@ -215,45 +303,135 @@ footer {
     padding: var(--espaciado-medio);
 }
 
+
 /* TABLET */
 @media (min-width: 48rem) {
 
+    /* El main pasa de una columna a dos */
+    main {
+        grid-template-columns: repeat(2, 1fr);
+
+    /* Define la ubicación de las secciones en la vista de tablet */
+        grid-template-areas:
+            "resumen resumen"
+            "misiones misiones"
+            "equipos equipos"
+            "alertas actividades";
+    }
+
+    /* Ocupa todo el ancho */
     .resumen {
+        grid-area: resumen;
+
+        /* Dos indicadores por fila */
         grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
     }
 
-    /* Dos misiones por fila */
+    /* Ocupa todo el ancho */
     .misiones {
+        grid-area: misiones;
+
+        /* Dos misiones por fila */
         grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
     }
 
-    /* Dos equipos por fila */
+    /* Ocupa todo el ancho */
     .equipos {
+        grid-area: equipos;
+
+        /* Dos equipos por fila */
         grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
+    }
+
+    /* Columna izquierda */
+    .alertas {
+        grid-area: alertas;
+    }
+
+    /* Columna derecha */
+    .actividades {
+        grid-area: actividades;
     }
 
     /* Colocamos hora, actividad y equipo horizontalmente */
     .actividades article {
         flex-direction: row;
-        align-items: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
         gap: var(--espaciado-medio);
     }
 }
 
+
 /* ESCRITORIO */
 @media (min-width: 64rem) {
+
+    /* Dos columnas: izquierda = 2 partes, derecha = 1 parte */
+    main {
+        grid-template-columns: 2fr 1fr;
+
+        /* Define la ubicación de cada sección dentro del Grid */
+        grid-template-areas:
+            "resumen resumen"
+            "misiones alertas"
+            "equipos actividades";
+    }
+
+    /*  Ocupa todo el ancho del Grid */
     .resumen {
+        grid-area: resumen;
+
+        /* Los cuatro indicadores aparecen en una misma fila */
         grid-template-columns: repeat(4, 1fr);
+
+        /* El título ocupa las cuatro columnas */
+        grid-template-areas:
+            "titulo titulo titulo titulo";
     }
 
-    /* Misiones en dos columnas porque tienen mucha informacion */
+    /* Misiones queda en la izquierda */
     .misiones {
+        grid-area: misiones;
+
+        /* Dos misiones por fila */
         grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
     }
 
-    /*
-    Equipos en una sola fila */
+    /* Alertas queda en la derecha */
+    .alertas {
+        grid-area: alertas;
+    }
+
+    /* Equipos queda a la izquierda */
     .equipos {
-        grid-template-columns: repeat(4, 1fr);
+        grid-area: equipos;
+
+        /* Organiza los equipos en dos columnas */
+        grid-template-columns: repeat(2, 1fr);
+
+        /* El título ocupa las dos columnas */
+        grid-template-areas:
+            "titulo titulo";
+    }
+
+    /* Actividades queda a la derecha */
+    .actividades {
+        grid-area: actividades;
     }
 }
